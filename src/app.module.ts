@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { RenterModule } from './renter/renter.module';
 import { AddressModule } from './address/address.module';
 import { RoomModule } from './room/room.module';
+import { RealStateModule } from './real-state/real-state.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { RoomModule } from './room/room.module';
     RenterModule,
     AddressModule,
     RoomModule,
+    RealStateModule,
   ],
   controllers: [],
   providers: [],
