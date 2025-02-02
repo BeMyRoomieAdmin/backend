@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import { Address } from 'src/address/entities/address.entity';
+import { Room } from 'src/room/entities/room.entity';
 
 @Schema({ timestamps: true })
 export class Renter extends Document {
@@ -25,6 +26,12 @@ export class Renter extends Document {
     required: true,
   })
   address: Address;
+
+  @Prop({
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Room',
+  })
+  rooms?: Room[];
 }
 
 export const RenterSchema = SchemaFactory.createForClass(Renter);

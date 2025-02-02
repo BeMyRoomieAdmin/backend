@@ -1,4 +1,5 @@
 import {
+  IsArray,
   IsEmail,
   IsMongoId,
   IsNotEmpty,
@@ -16,6 +17,11 @@ export class CreateHirerDto {
   @IsNotEmpty()
   @IsMongoId()
   type: Type;
+
+  @IsNotEmpty()
+  @IsArray()
+  @IsMongoId({ each: true })
+  apartment: string[];
 
   @IsNotEmpty()
   @IsPhoneNumber()

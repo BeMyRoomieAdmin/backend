@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { Type, TypeSchema } from './type.schema';
+import { Apartment } from 'src/apartment/entities/apartment.entity';
 
 @Schema({ timestamps: true })
 export class Hirer extends Document {
@@ -9,6 +10,12 @@ export class Hirer extends Document {
     required: true,
   })
   type: Type;
+
+  @Prop({
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Apartment',
+  })
+  apartment: Apartment[];
 
   @Prop({ required: true })
   phone: number;
