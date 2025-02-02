@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 @Schema({ timestamps: true })
 export class Owner extends Document {
   @Prop({ required: true })
-  companyName: string;
+  name: string;
 
   @Prop({ required: true, unique: true })
   dni: string;

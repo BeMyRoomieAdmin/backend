@@ -6,7 +6,7 @@ export class CreateOwnerDto {
   @IsNotEmpty()
   @IsString()
   @Transform(({ value }) => (value as string).toLowerCase().trim())
-  companyName: string;
+  name: string;
 
   @IsNotEmpty()
   @IsString()
