@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { RenterModule } from './renter/renter.module';
+import { AddressModule } from './address/address.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { RenterModule } from './renter/renter.module';
       dbName: 'be-my-roomie',
     }),
     RenterModule,
+    AddressModule,
   ],
   controllers: [],
   providers: [],
