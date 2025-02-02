@@ -5,6 +5,9 @@ import { RenterModule } from './renter/renter.module';
 import { AddressModule } from './address/address.module';
 import { RoomModule } from './room/room.module';
 import { RealStateModule } from './real-state/real-state.module';
+import { HirerModule } from './hirer/hirer.module';
+import { OwnerModule } from './owner/owner.module';
+import { ApartmentModule } from './apartment/apartment.module';
 
 @Module({
   imports: [
@@ -18,6 +21,9 @@ import { RealStateModule } from './real-state/real-state.module';
     AddressModule,
     RoomModule,
     RealStateModule,
+    HirerModule,
+    OwnerModule,
+    ApartmentModule,
   ],
   controllers: [],
   providers: [],

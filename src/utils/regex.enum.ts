@@ -1,4 +1,4 @@
-import { CIF_REGEX } from './enums/cif.regex';
+import { CIF_REGEX } from './regex/cif.regex';
 
 export enum regexEnum {
   PASSWORD_PATTERN = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)([A-Za-z\\d]|[^ ]){8,20}$',
