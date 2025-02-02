@@ -8,6 +8,7 @@ import { RealStateModule } from './real-state/real-state.module';
 import { HirerModule } from './hirer/hirer.module';
 import { OwnerModule } from './owner/owner.module';
 import { ApartmentModule } from './apartment/apartment.module';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ApartmentModule } from './apartment/apartment.module';
     HirerModule,
     OwnerModule,
     ApartmentModule,
+    SharedModule,
   ],
   controllers: [],
   providers: [],
