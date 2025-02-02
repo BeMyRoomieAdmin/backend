@@ -6,7 +6,7 @@ export class RealState extends Document {
   @Prop({ required: true })
   companyName: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   cif: string;
 }
 
