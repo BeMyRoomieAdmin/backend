@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { RenterModule } from './renter/renter.module';
 import { AddressModule } from './address/address.module';
+import { RoomModule } from './room/room.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AddressModule } from './address/address.module';
     }),
     RenterModule,
     AddressModule,
+    RoomModule,
   ],
   controllers: [],
   providers: [],
