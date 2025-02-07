@@ -1,14 +1,10 @@
 import { Module } from '@nestjs/common';
 // import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigurationModule } from './config/configuration.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [
-    ConfigurationModule,
-    // MongooseModule.forRoot(process.env.MONGODB_URI!, {
-    //   dbName: 'be-my-roomie',
-    // }),
-  ],
+  imports: [ConfigurationModule, DatabaseModule],
   controllers: [],
   providers: [],
 })
