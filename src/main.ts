@@ -24,7 +24,7 @@ async function bootstrap() {
   );
 
   // --- Configuración de Helmet para seguridad HTTP ---
-  app.use(helmet);
+  app.use(helmet());
 
   // --- Eliminar el header X-Powered-By por seguridad ---
   app.disable('x-powered-by');

@@ -20,6 +20,11 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @Post()
+  createMany(@Body() createUserDto: CreateUserDto[]) {
+    return this.userService.createMany(createUserDto);
+  }
+
   @Get()
   findAll() {
     return this.userService.findAll();
@@ -33,6 +38,11 @@ export class UserController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(+id, updateUserDto);
+  }
+
+  @Delete()
+  removeAll() {
+    return this.userService.removeAll();
   }
 
   @Delete(':id')
