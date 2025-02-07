@@ -1,36 +1,36 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import { NextFunction, Request, Response } from 'express';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
+import helmet from 'helmet';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  // const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  // Establecer el prefijo de la API
-  app.setGlobalPrefix('api');
+  // --- Prefijo Global 'api' ---
+  app.setGlobalPrefix('api'); // Añade el prefijo 'api' a todas las rutas
 
+  // --- Configuración de GlobalPipes ---
   app.useGlobalPipes(
     new ValidationPipe({
-      // El validador quitará al objeto validado cualquier propiedad que no utilice ningún decorador de validación
-      whitelist: true,
-      // En lugar de eliminar las propiedades no incluidas en la lista blanca, el validador arrojará un error
-      forbidNonWhitelisted: true,
-      // Transforma automáticamente objetos en una llamada para que sean objetos tipados según sus clases DTO
-      transform: true,
+      whitelist: true, // Elimina propiedades extrañas en DTOs
+      forbidNonWhitelisted: true, // Lanza error si se reciben propiedades no permitidas
+      transform: true, // Transforma payloads a los tipos definidos en DTOs
       transformOptions: {
-        // El transformador de clase intentará la conversión según el tipo reflejado de TS
-        enableImplicitConversion: true,
+        enableImplicitConversion: true, // Habilita la conversión implícita de tipos
       },
     }),
   );
 
-  // Elimina la cabecera X-Powered-By de las respuestas
-  app.use((req: Request, res: Response, next: NextFunction) => {
-    res.removeHeader('X-Powered-By');
-    next();
-  });
+  // --- Configuración de Helmet para seguridad HTTP ---
+  app.use(helmet);
 
-  await app.listen(process.env.PORT ?? 3000);
+  // --- Eliminar el header X-Powered-By por seguridad ---
+  app.disable('x-powered-by');
+
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
   Logger.log(`Server running on port ${process.env.PORT}`, 'NestApplication');
 }
 
