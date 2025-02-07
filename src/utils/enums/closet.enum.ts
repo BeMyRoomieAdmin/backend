@@ -1,5 +1,5 @@
-export enum Closet {
-  NONE = 'none',
-  NORMAL = 'normal',
-  BUILTIN = 'builtin',
-}
+// export enum Closet {
+//   NONE = 'none',
+//   NORMAL = 'normal',
+//   BUILTIN = 'builtin',
+// }
