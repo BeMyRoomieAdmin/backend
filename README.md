@@ -158,6 +158,7 @@ DATABASE_HOST=localhost
 DATABASE_PORT=27017
 DATABASE_NAME=be-my-roomie-development
 PASSWORD=123123aS
+JWT_SECRET=FraseDeSeguridadPrivadaParaBeMyRoomie
 ```
 
 ## 4. Ejecución

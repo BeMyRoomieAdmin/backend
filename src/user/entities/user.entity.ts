@@ -49,6 +49,9 @@ export class User extends Document {
   })
   isActive: boolean = false;
 
+  @Prop()
+  activationCode?: string;
+
   @Prop({
     default: false,
   })
