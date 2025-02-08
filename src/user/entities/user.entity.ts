@@ -8,8 +8,6 @@ import { ValidRoles } from 'src/utils/enums/validRoles.enum';
 export class User extends Document {
   @Prop({
     required: true,
-    minlength: 8,
-    maxlength: 20,
   })
   password: string;
 
@@ -35,6 +33,7 @@ export class User extends Document {
   secondLastName?: string;
 
   @Prop({
+    unique: true,
     required: false,
   })
   phoneNumber?: string;

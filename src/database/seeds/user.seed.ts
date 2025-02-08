@@ -1,16 +1,25 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../../app.module';
-import { UserService } from '../../user/user.service';
-import { CreateUserDto } from '../../user/dto/create-user.dto';
 import { faker } from '@faker-js/faker';
+import { AppModule } from '../../app.module';
+import { CreateUserDto } from '../../user/dto/create-user.dto';
+import { UserService } from '../../user/user.service';
 import { ValidRoles } from 'src/utils/enums/validRoles.enum';
+import { BcryptService } from 'src/shared/services/bcrypt.service';
+import { ConfigService } from '@nestjs/config';
 
 export async function runSeed() {
   const app = await NestFactory.createApplicationContext(AppModule);
 
   try {
+    const configService = app.get(ConfigService);
     const userService = app.get(UserService);
+    const bcryptService = app.get(BcryptService);
     const numberOfUsersToSeed = 100;
+
+    const password = configService.get<string>('PASSWORD');
+    const hashedPassword: string = await bcryptService.encryptPassword(
+      password!,
+    );
 
     console.log(`🌱 Seeding ${numberOfUsersToSeed} users...`);
 
@@ -21,8 +30,8 @@ export async function runSeed() {
         const lastName = faker.person.lastName();
 
         return {
-          password: '123123aS',
-          email: `${firstName.toLocaleLowerCase()}_${lastName.toLocaleLowerCase()}@example.com`,
+          password: hashedPassword,
+          email: `${firstName.toLocaleLowerCase()}_${lastName.toLocaleLowerCase()}@mail.com`,
           firstName: firstName.toLocaleLowerCase(),
           lastName: lastName.toLocaleLowerCase(),
           secondLastName: faker.person.lastName().toLocaleLowerCase(),
