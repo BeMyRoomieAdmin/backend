@@ -1,6 +1,9 @@
-import { Controller, Post, Body, HttpCode } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, Get, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
+import { Auth } from './decorators/auth.decorator';
+import { ValidRoles } from './interfaces/valid-roles.interface';
+import { UserRequest } from 'src/shared/interfaces/user-request.interface';
 
 @Controller('auth')
 export class AuthController {
@@ -12,14 +15,14 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
-  // @Get('check-token')
-  // @Auth(
-  //   ValidRoles.admin,
-  //   ValidRoles.company,
-  //   ValidRoles.driver,
-  //   ValidRoles.user,
-  // )
-  // checkToken(@Request() req: Request) {
-  //   return this.authService.checkToken(req['user']);
-  // }
+  @Get('check-token')
+  @Auth(
+    ValidRoles.admin,
+    ValidRoles.agency,
+    ValidRoles.owner,
+    ValidRoles.tenant,
+  )
+  checkToken(@Request() req: UserRequest) {
+    return this.authService.checkToken(req.user);
+  }
 }

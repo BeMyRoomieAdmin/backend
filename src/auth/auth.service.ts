@@ -51,4 +51,28 @@ export class AuthService {
       throw new InternalServerErrorException('Error login user');
     }
   }
+
+  async checkToken(user: User) {
+    await user.populate('role');
+
+    try {
+      const token = this.jwtService.sign({ id: user._id });
+
+      return {
+        user: {
+          _id: user._id,
+          firsName: user.firstName,
+          email: user.email,
+          role: user.role,
+          isActive: user.isActive,
+          activationCode: user.activationCode ? true : false,
+        },
+        token,
+      };
+    } catch (error) {
+      console.error(error);
+
+      throw new InternalServerErrorException('Error checking token');
+    }
+  }
 }
