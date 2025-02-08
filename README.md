@@ -123,6 +123,18 @@ BeMyRoomie utiliza una base de datos llamada MongoDB. ¡No te preocupes, es más
 
       Este comando creará un "contenedor" virtual con la base de datos MongoDB. ¡Así de fácil! Se paciente porque puede tardar un poco.
 
+3.  **Visor de bases de datos:**
+
+    - Descarga MongoDB Compass desde este enlace: [https://www.mongodb.com/try/download/compass](https://www.mongodb.com/try/download/compass) y sigue los pasos de instalación o cualquier otro programa que te guste.
+    - Abre la aplicación y ve a `Connections` en la parte superior izquierda de la ventana.
+    - En la ventana emergente, escribe en el campo `Connection URI` el siguiente enlace, asígnale un nombre y un color a la conexión y presiona `Connect`:
+
+    ```bash
+    mongodb://<username>:<password>@localhost:27017/<dbname>?authSource=admin
+    ```
+
+    \*username, password y dbname son las variables de entorno que has asignado anteriormente en tu archivo de variables de entorno **.env.\***
+
 ¡Con estos pasos, tendrás todo lo necesario para empezar a trabajar con BeMyRoomie! En la siguiente sección te explicamos cómo ejecutar la aplicación.
 
 ---
