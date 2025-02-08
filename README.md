@@ -1,99 +1,187 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# BeMyRoomie
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![Node.js Version](https://img.shields.io/badge/Node.js-22.13.1-blue)](https://nodejs.org/)
+[![NestJS Version](https://img.shields.io/badge/NestJS-11.0.1-red)](https://nestjs.com/)
+[![Mongoose Version](https://img.shields.io/badge/Mongoose-8.9.6-green)](https://mongoosejs.com/)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Una plataforma para conectar a personas que buscan compañeros de piso con gustos y necesidades similares.
 
-## Description
+## Tabla de contenidos
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1.  Introducción
+2.  Instalación
+3.  Configuración
+4.  Ejecución
+5.  Funcionalidades
+6.  Licencia
+7.  Contacto
 
-## Project setup
+## 1. Introducción
 
-```bash
-$ npm install
+BeMyRoomie es una plataforma innovadora diseñada para facilitar la búsqueda de compañeros de piso ideales. Nuestra misión es conectar a personas con intereses y estilos de vida compatibles, creando así hogares armoniosos y experiencias de convivencia positivas.
+
+Este proyecto está desarrollado con NestJS, un framework de Node.js progresivo y robusto, que nos permite construir aplicaciones escalables y mantenibles. Utilizamos Mongoose para interactuar con MongoDB, nuestra base de datos NoSQL elegida por su flexibilidad y rendimiento.
+
+## 2. Instalación
+
+¡Vamos a preparar tu ordenador para que puedas ejecutar BeMyRoomie! Sigue estos pasos con cuidado:
+
+### Requisitos
+
+- Node.js versión 22.13.1
+- npm (o yarn, pnpm)
+- Docker y Docker Compose
+
+### 2.1. Instalación de software básico
+
+Lo primero que necesitamos es instalar algunas herramientas esenciales:
+
+1.  **Windows:**
+
+    - **Google Chrome:** Descarga e instala Google Chrome desde este enlace: [https://www.google.com/chrome/](https://www.google.com/chrome/)
+    - **Node.js y npm:** Descarga el instalador de Node.js LTS versión 22.13.1 desde este enlace: [https://nodejs.org/download/release/v22.13.1/node-v22.13.1-x64.msi](https://nodejs.org/download/release/v22.13.1/node-v22.13.1-x64.msi) y sigue los pasos de instalación. ¡No te preocupes si no entiendes algunas opciones, puedes dejarlas como están!
+    - **Git:** Descarga Git desde este enlace: [https://git-scm.com/download/win](https://git-scm.com/download/win) y sigue los pasos de instalación. Git nos servirá para descargar el código del proyecto.
+    - **Visual Studio Code:** Descarga Visual Studio Code desde este enlace: [https://code.visualstudio.com/Download](https://code.visualstudio.com/Download) y sigue los pasos. Este será nuestro editor de código.
+    - **Docker Desktop:** Descarga Docker Desktop desde este enlace: [https://docs.docker.com/desktop/setup/install/windows-install/](https://docs.docker.com/desktop/setup/install/windows-install/) y sigue los pasos. Docker nos permitirá crear un entorno virtual para la base de datos.
+
+2.  **macOS:**
+
+    - **Google Chrome:** Descarga e instala Google Chrome desde este enlace: [https://www.google.com/chrome/](https://www.google.com/chrome/)
+    - **Homebrew:** Abre la terminal (Aplicaciones > Terminal) y pega este comando:
+
+      ```bash
+      /bin/bash -c "$(curl -fsSL [https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh](https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh))"
+      ```
+
+      Homebrew nos ayudará a instalar otras herramientas.
+
+    - **Node.js y npm:** Abre la terminal y escribe:
+
+      ```bash
+      brew install node@22.13.1
+      ```
+
+    - **Git:** Abre la terminal y escribe:
+
+      ```bash
+      brew install git
+      ```
+
+    - **Visual Studio Code:** Descarga Visual Studio Code desde este enlace: [https://code.visualstudio.com/Download](https://code.visualstudio.com/Download) y sigue los pasos.
+    - **Docker Desktop:** Descarga Docker Desktop desde este enlace: [https://docs.docker.com/desktop/setup/install/mac-install/](https://docs.docker.com/desktop/setup/install/mac-install/) y sigue los pasos.
+
+3.  **Linux:**
+
+    - La instalación varía según la distribución. Busca en internet cómo instalar Chrome, Node.js, Git, Visual Studio Code y Docker Desktop en tu distribución específica (por ejemplo, Ubuntu, Fedora, etc.).
+
+### 2.2. ¡Manos a la obra con BeMyRoomie!
+
+¡Ya casi estamos listos! Ahora vamos a preparar el proyecto BeMyRoomie:
+
+1.  **Descarga del código:**
+
+    - Abre la terminal (en Windows busca "cmd" o "Símbolo del sistema").
+    - Navega a la carpeta donde quieres guardar el proyecto. Puedes usar el comando `cd` (por ejemplo, `cd Documentos/proyectos`).
+    - Clona el repositorio con este comando (recuerda que debes ser colaborador del proyecto):
+
+      ```bash
+      git clone https://github.com/BeMyRoomieAdmin/backend
+      ```
+
+2.  **Abre el proyecto con Visual Studio Code:**
+
+    - Abre Visual Studio Code.
+    - Ve a "Archivo" > "Abrir carpeta..." y selecciona la carpeta que acabas de clonar.
+
+3.  **Instala las dependencias:**
+
+    - Abre la terminal dentro de Visual Studio Code (puedes ir a "Ver" > "Terminal" o pulsar `Ctrl + J` (Windows) o `Command + J` (macOS)).
+    - Escribe este comando y presiona Enter:
+
+      ```bash
+      npm install
+      ```
+
+      Este comando instalará todas las herramientas necesarias para que BeMyRoomie funcione. ¡Puede tardar un poco!
+
+### 2.3. ¡La base de datos en marcha!
+
+BeMyRoomie utiliza una base de datos llamada MongoDB. ¡No te preocupes, es más fácil de lo que parece!
+
+1.  **Busca el archivo `docker-compose.yml` en la raíz del proyecto:**
+
+    - El archivo `docker-compose.yml` está en la raíz del proyecto. Si no lo ves, ponte en contacto con el equipo de desarrollo. Mas detalles al final de este documento.
+
+2.  **Levanta el contenedor de MongoDB:**
+
+    - Abre la terminal dentro de Visual Studio Code (si no la tienes abierta).
+    - Escribe este comando y presiona Enter:
+
+      ```bash
+      docker-compose up -d
+      ```
+
+      Este comando creará un "contenedor" virtual con la base de datos MongoDB. ¡Así de fácil! Se paciente porque puede tardar un poco.
+
+¡Con estos pasos, tendrás todo lo necesario para empezar a trabajar con BeMyRoomie! En la siguiente sección te explicamos cómo ejecutar la aplicación.
+
+---
+
+**Nota importante:** Si en algún momento te encuentras con un error o no sabes cómo continuar, ¡no te preocupes! Busca en internet (por ejemplo, en Google) el mensaje de error o la duda que tengas. ¡Seguro que encuentras la respuesta! Y si no, ¡siempre puedes pedir ayuda a alguien con más experiencia!
+
+---
+
+## 3. Configuración
+
+### Variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto y copia el contenido del archivo `.env.example` (si lo tienes) o añade las siguientes variables de ejemplo:
+
+```
+NODE_ENV=development
+PORT=3000
+DATABASE_USER=root
+DATABASE_PASSWORD=root
+DATABASE_HOST=localhost
+DATABASE_PORT=27017
+DATABASE_NAME=be-my-roomie-development
+PASSWORD=123123aS
 ```
 
-## Compile and run the project
+## 4. Ejecución
+
+Para poder empezar a trabajar con BeMyRoomie, es necesario levantar el proyecto correctamente en tu ordenador. Pero antes de eso, necesitamos tener Docker y Docker Compose instalados y la base de datos en marcha siguiendo los pasos de la sección anterior.
+
+Para poblar la base de datos con datos ficticios, debes ejecutar el siguiente comando:
+
+### Seed de la base de datos
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run seed
 ```
 
-## Run tests
+Y una vez terminado el proceso sin ningún error, puedes empezar a trabajar con el proyecto. Para ello, ejecuta el siguiente comando:
+
+### Desarrollo
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run dev
 ```
 
-## Deployment
+## 5. Funcionalidades
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- Registro de usuarios
+- Recuperación de contraseña
+- Inicio de sesión
+- Búsqueda de Habitaciones
+- Creación de Apartamentos
+- Creación de Habitaciones
+- Chat en vivo entre usuarios con websockets (en desarrollo)
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## 6. Licencia
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+Este proyecto es privado y todos los derechos están reservados.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 7. Contacto
 
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Correo electrónico: bemyroomieofficial@gmail.com
