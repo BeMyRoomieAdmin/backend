@@ -17,22 +17,22 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @IsEmail()
-  @Transform(({ value }: { value: string }) => value.toLowerCase())
+  @Transform(({ value }: { value: string }) => value.toLowerCase().trim())
   readonly email: string;
 
   @IsNotEmpty()
   @IsString()
-  @Transform(({ value }: { value: string }) => value.toLowerCase())
+  @Transform(({ value }: { value: string }) => value.toLowerCase().trim())
   readonly firstName: string;
 
   @IsNotEmpty()
   @IsString()
-  @Transform(({ value }: { value: string }) => value.toLowerCase())
+  @Transform(({ value }: { value: string }) => value.toLowerCase().trim())
   readonly lastName: string;
 
   @IsOptional()
   @IsString()
-  @Transform(({ value }: { value: string }) => value.toLowerCase())
+  @Transform(({ value }: { value: string }) => value.toLowerCase().trim())
   readonly secondLastName?: string;
 
   @IsOptional()
