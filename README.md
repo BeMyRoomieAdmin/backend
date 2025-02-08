@@ -91,7 +91,7 @@ Lo primero que necesitamos es instalar algunas herramientas esenciales:
 2.  **Abre el proyecto con Visual Studio Code:**
 
     - Abre Visual Studio Code.
-    - Ve a "Archivo" > "Abrir carpeta..." y selecciona la carpeta que acabas de clonar.
+    - Ve a "Archivo" > "Abrir carpeta..." y selecciona la carpeta que acabas de clonar. Recuerda que la carpeta con el contenido se encuentra dentro del directorio donde has clonado el repositorio. La carpeta donde debes derigirte es `backend`.
 
 3.  **Instala las dependencias:**
 
