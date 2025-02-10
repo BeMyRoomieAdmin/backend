@@ -44,6 +44,7 @@ export async function runSeed() {
           role: faker.helpers.arrayElement(
             Object.values(ValidRoles),
           ) as ValidRoles,
+          isActive: true,
         };
       },
     );
