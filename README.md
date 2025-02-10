@@ -181,6 +181,41 @@ Y una vez terminado el proceso sin ningún error, puedes empezar a trabajar con 
 npm run dev
 ```
 
+### Pruebas de endpoints
+
+Para poder probar los endpoints de tu aplicación, puedes utilizar algún programa de pruebas como [Postman](https://www.postman.com/downloads/) o [Insomnia](https://insomnia.rest/download).
+
+Para poder realizar una llamada de prueba se debe realizar un login:
+
+- Tipo de llamada: POST
+- URL: http://localhost:3000/auth/login
+- Contenido de la petición:
+
+```json
+{
+  "email": "email@existente.com", // Cambiar por un email existente
+  "password": "123123aS" // Nunca cambia este valor en datos de prueba
+}
+```
+
+Como puntualización, se debe usar un email que se haya creado previamente en la base de datos con el seed de usuarios. Estos datos se pueden obtener revisando el modelo users desde MongoDB Compass (o el visor de bases de datos que prefieras).
+
+Una vez realizada la llamada, se debe obtener un token de autenticación en la respuesta, junto a otros datos del usuario.
+
+Respuesta de ejemplo:
+
+```json
+{
+  "user": {
+    "_id": "67a704dc20f4a8bf2879dabf",
+    "firstName": "dina",
+    "email": "dina_gutmann@mail.com",
+    "role": "agency"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTcwNGRjMjBmNGE4YmYyODc5ZGFiZiIsImlhdCI6MTczOTA1MjUwOSwiZXhwIjoxNzM5MTM4OTA5fQ.kcvNeF2iRE7HYI6fGzUKynsg909Z567PsnTjs9JF5A4"
+}
+```
+
 ## 5. Funcionalidades
 
 - Registro de usuarios
