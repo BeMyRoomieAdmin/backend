@@ -6,9 +6,10 @@ import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { TenantModule } from './tenant/tenant.module';
 import { AuthModule } from './auth/auth.module';
+import { RoomModule } from './room/room.module';
 
 @Module({
-  imports: [ConfigurationModule, DatabaseModule, UserModule, SharedModule, TenantModule, AuthModule],
+  imports: [ConfigurationModule, DatabaseModule, UserModule, SharedModule, TenantModule, AuthModule, RoomModule],
   controllers: [],
   providers: [],
 })
