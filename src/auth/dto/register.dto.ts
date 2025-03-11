@@ -1,6 +1,7 @@
 import { Transform } from 'class-transformer';
 import {
   IsEmail,
+  IsEnum,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -9,8 +10,9 @@ import {
   MinLength,
 } from 'class-validator';
 import { PASSWORD_REGEX } from 'src/utils/regex/password.regex';
+import { ValidRoles } from '../interfaces/valid-roles.interface';
 
-export class CreateUserDto {
+export class RegisterDto {
   @IsString()
   @MinLength(8)
   @MaxLength(20)
@@ -43,4 +45,7 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   readonly phoneNumber?: string;
+
+  @IsEnum(ValidRoles)
+  readonly role: ValidRoles;
 }

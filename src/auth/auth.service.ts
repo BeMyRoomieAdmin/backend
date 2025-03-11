@@ -9,15 +9,22 @@ import { User } from 'src/user/entities/user.entity';
 import { Model } from 'mongoose';
 import { BcryptService } from 'src/shared/services/bcrypt.service';
 import { JwtService } from '@nestjs/jwt';
+import { RegisterDto } from './dto/register.dto';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(User.name)
     private readonly userModel: Model<User>,
+    private readonly userService: UserService,
     private readonly bcryptService: BcryptService,
     private readonly jwtService: JwtService,
   ) {}
+
+  async register(registerDto: RegisterDto) {
+    await this.userService.create(registerDto);
+  }
 
   async login(loginDto: LoginDto) {
     const user = await this.userModel.findOne({
@@ -64,8 +71,6 @@ export class AuthService {
           firsName: user.firstName,
           email: user.email,
           role: user.role,
-          isActive: user.isActive,
-          activationCode: user.activationCode ? true : false,
         },
         token,
       };

@@ -4,10 +4,16 @@ import { LoginDto } from './dto/login.dto';
 import { Auth } from './decorators/auth.decorator';
 import { ValidRoles } from './interfaces/valid-roles.interface';
 import { UserRequest } from 'src/shared/interfaces/user-request.interface';
+import { RegisterDto } from './dto/register.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  @Post('register')
+  register(@Body() registerDto: RegisterDto) {
+    return this.authService.register(registerDto);
+  }
 
   @Post('login')
   @HttpCode(200)
