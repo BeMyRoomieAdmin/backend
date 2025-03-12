@@ -34,4 +34,9 @@ export class CreateRoomDto {
   @IsNotEmpty()
   @IsBoolean()
   airConditioning: boolean;
+
+  @IsNotEmpty()
+  @IsNumber()
+  @IsPositive()
+  price: number;
 }

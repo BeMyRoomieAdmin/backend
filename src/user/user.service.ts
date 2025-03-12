@@ -29,7 +29,9 @@ export class UserService {
         password: hashedPassword,
       });
 
-      return await createdUser.save();
+      await createdUser.save();
+
+      return createdUser;
     } catch (error) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (error.code === 11000) {

@@ -25,6 +25,11 @@ export class RoomController {
     return this.roomService.findAll();
   }
 
+  @Get('home')
+  findAllHome() {
+    return this.roomService.findAllHome();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.roomService.findOne(+id);

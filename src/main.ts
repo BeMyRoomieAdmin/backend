@@ -8,6 +8,9 @@ async function bootstrap() {
   // const app = await NestFactory.create(AppModule);
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  // Habilita CORS para todas las rutas de la aplicación con el origen configurado
+  app.enableCors();
+
   // --- Prefijo Global 'api' ---
   app.setGlobalPrefix('api'); // Añade el prefijo 'api' a todas las rutas
 

@@ -50,6 +50,17 @@ export class Room extends Document {
     default: true,
   })
   free: boolean;
+
+  @Prop({
+    required: true,
+  })
+  price: number;
+
+  @Prop({
+    required: true,
+    default: 'https://picsum.photos/200/300',
+  })
+  image: string;
 }
 
 export const RoomSchema = SchemaFactory.createForClass(Room);

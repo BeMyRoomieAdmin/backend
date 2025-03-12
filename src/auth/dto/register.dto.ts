@@ -46,6 +46,7 @@ export class RegisterDto {
   @IsString()
   readonly phoneNumber?: string;
 
+  @IsOptional()
   @IsEnum(ValidRoles)
-  readonly role: ValidRoles;
+  readonly role?: ValidRoles;
 }
