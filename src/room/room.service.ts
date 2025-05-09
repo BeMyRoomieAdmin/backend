@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   BadRequestException,
   Injectable,
@@ -22,7 +23,6 @@ export class RoomService {
 
       return await createdRoom.save();
     } catch (error) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (error.code === 11000) {
         throw new BadRequestException('Room already exists');
       } else {
@@ -37,20 +37,38 @@ export class RoomService {
   }
 
   async findAllHome() {
-    return await this.roomModel.find().select('image free area price -_id');
+    return await this.roomModel.find().select('image free area price _id');
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} room`;
+  async findOne(id: string) {
+    return await this.roomModel.findById(id);
   }
 
-  update(id: number, updateRoomDto: UpdateRoomDto) {
-    console.log(updateRoomDto);
-
-    return `This action updates a #${id} room`;
+  update(id: string, updateRoomDto: UpdateRoomDto) {
+    try {
+      return this.roomModel.findByIdAndUpdate(id, updateRoomDto, {
+        new: true,
+      });
+    } catch (error) {
+      if (error.code === 11000) {
+        throw new BadRequestException('Room already exists');
+      } else {
+        console.error('Error updating room:', error);
+        throw new InternalServerErrorException('Internal server error');
+      }
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} room`;
+  remove(id: string) {
+    try {
+      return this.roomModel.findByIdAndDelete(id);
+    } catch (error) {
+      if (error.code === 11000) {
+        throw new BadRequestException('Room already exists');
+      } else {
+        console.error('Error deleting room:', error);
+        throw new InternalServerErrorException('Internal server error');
+      }
+    }
   }
 }
