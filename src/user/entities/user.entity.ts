@@ -1,11 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document, Types } from 'mongoose';
 import { ValidRoles } from 'src/utils/enums/validRoles.enum';
 
 @Schema({
   timestamps: true,
 })
 export class User extends Document {
+  _id: Types.ObjectId;
+
   @Prop({
     required: true,
   })
@@ -45,7 +47,13 @@ export class User extends Document {
   role: ValidRoles;
 
   @Prop({
-    default: false,
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Room' }],
+    default: [],
+  })
+  rooms: Types.ObjectId[];
+
+  @Prop({
+    default: true,
   })
   isActive: boolean = false;
 

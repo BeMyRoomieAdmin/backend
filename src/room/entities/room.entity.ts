@@ -1,10 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document, Types } from 'mongoose';
 
 @Schema({
   timestamps: true,
 })
 export class Room extends Document {
+  _id: Types.ObjectId;
+
   @Prop({
     required: true,
   })

@@ -52,8 +52,8 @@ export class UserService {
     return `This action returns all user`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string): Promise<User | null> {
+    return await this.userModel.findById(id);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
@@ -70,5 +70,18 @@ export class UserService {
     return {
       message: 'All users removed successfully',
     };
+  }
+
+  async removeRoom(id: string, user: User) {
+    try {
+      user.rooms = user.rooms.filter((room) => room.toString() !== id);
+
+      await user.save();
+
+      return user;
+    } catch (error) {
+      console.error('Error removing room:', error);
+      throw new InternalServerErrorException('Internal server error');
+    }
   }
 }

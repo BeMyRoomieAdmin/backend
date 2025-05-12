@@ -10,6 +10,8 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { MongoIdPipe } from 'src/utils/pipes/mongo-id.pipe';
+import { User } from './entities/user.entity';
 
 @Controller('user')
 export class UserController {
@@ -31,8 +33,8 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+  findOne(@Param('id', MongoIdPipe) id: string): Promise<User | null> {
+    return this.userService.findOne(id);
   }
 
   @Patch(':id')

@@ -9,6 +9,7 @@ export class MongoIdPipe implements PipeTransform<string, string> {
         'El ID proporcionado no es un MongoID válido',
       );
     }
+
     return value;
   }
 }

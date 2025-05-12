@@ -9,6 +9,7 @@ import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
 import { META_ROLES } from '../decorators/role-protected.decorator';
 import { UserRequest } from 'src/shared/interfaces/user-request.interface';
+import { User } from 'src/user/entities/user.entity';
 
 @Injectable()
 export class UserRoleGuard implements CanActivate {
@@ -28,7 +29,7 @@ export class UserRoleGuard implements CanActivate {
 
     const req: UserRequest = context.switchToHttp().getRequest();
 
-    const user = req.user;
+    const user: User = req.user;
 
     if (!user) throw new NotFoundException('User not found');
 

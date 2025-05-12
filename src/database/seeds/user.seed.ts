@@ -14,7 +14,7 @@ export async function runSeed() {
     const configService = app.get(ConfigService);
     const userService = app.get(UserService);
     const bcryptService = app.get(BcryptService);
-    const numberOfUsersToSeed = 100;
+    const numberOfUsersToSeed = 5;
 
     const password = configService.get<string>('PASSWORD');
     const hashedPassword: string = await bcryptService.encryptPassword(
